@@ -1,68 +1,117 @@
 /* Navbar Styles */
 .navbar {
   background-color: #FFFFFF;
-  padding: 5px; 
+  padding: 10px 20px; /* Add some padding for a cleaner look */
   display: flex;
-  justify-content: flex-end;  /* Align to the right */
+  justify-content: space-between;  /* Spread out elements */
   align-items: center;
+  position: relative;
+  z-index: 100; /* Ensure navbar stays above other content */
 }
 
+/* Content inside navbar */
 .nav-content {
   display: flex;
   align-items: center;
   font-size: 16px;
+  flex-grow: 1; /* Allow it to take up available space */
+  justify-content: space-between;
 }
 
+/* User info section (avatar + name) */
 .user-info {
-  display: flex;              /* Ensure the avatar and name are in a row */
-  align-items: center; 
-  margin-left: -15rem;       /* Vertically align the avatar and name */
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align avatar and name to the right corner */
+  margin-left: auto; /* Push user info to the right side */
 }
 
+/* User name styling */
 .user-name {
   color: #132A52;
   font-weight: 600;
-  margin-left: 0.5rem;        /* Add space between avatar and name */
+  margin-left: 0.5rem; /* Space between avatar and name */
   text-decoration: none;
   cursor: pointer;
+  font-size: 16px;
 }
 
+/* Avatar styling */
 .avatar {
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;          /* Make the avatar a circle */
-  object-fit: cover;          /* Ensure the image fills the circle */
+  border-radius: 50%; /* Make avatar a circle */
+  object-fit: cover; /* Ensure the image fills the circle */
 }
 
-/* Media Queries */
-@media (min-width: 640px) {
+/* Media Queries for responsiveness */
+
+/* Laptop and larger screens */
+@media (min-width: 1024px) {
   .navbar {
-    padding: 1.25rem;         /* Larger padding on bigger screens */
+    padding: 1rem 2rem; /* Increase padding for larger screens */
   }
 
   .user-name {
-    margin-left: 1rem;        /* Increase the space between the avatar and name */
+    margin-left: 1rem; /* More space between avatar and name */
+    font-size: 18px; /* Larger font size */
   }
 
   .avatar {
-    width: 4rem;              /* Bigger avatar for larger screens */
+    width: 4rem; /* Larger avatar */
     height: 4rem;
   }
 }
 
-@media (max-width: 639px) {
+/* Tablet screens (below 1024px) */
+@media (max-width: 1023px) {
   .navbar {
-    justify-content: center;  /* Center the profile content on smaller screens */
-    padding: 0.5rem;          /* Reduce padding on smaller screens */
+    padding: 0.5rem 10px; /* Reduce padding */
+    justify-content: center; /* Center navbar contents */
   }
 
   .user-name {
-    margin-left: 0.5rem;      /* Keep a small margin between avatar and name */
-    font-size: 14px;          /* Slightly smaller text on small screens */
+    font-size: 14px; /* Smaller font size for tablet */
+    margin-left: 0.5rem; /* Keep a small margin */
   }
 
   .avatar {
-    width: 2.5rem;            /* Smaller avatar on smaller screens */
+    width: 2.5rem; /* Smaller avatar on tablet */
     height: 2.5rem;
+  }
+}
+
+/* Mobile screens (below 640px) */
+@media (max-width: 639px) {
+  .navbar {
+    padding: 0.5rem 10px; /* Reduce padding */
+    justify-content: center; /* Center navbar contents */
+  }
+
+  .user-name {
+    font-size: 14px; /* Smaller font size for mobile */
+    margin-left: 0.5rem; /* Keep a small margin */
+  }
+
+  .avatar {
+    width: 2.5rem; /* Smaller avatar on mobile */
+    height: 2.5rem;
+  }
+}
+
+/* Very small screens (portrait mobile devices) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 10px; /* Further reduce padding for very small screens */
+  }
+
+  .user-name {
+    font-size: 12px; /* Even smaller font for very small screens */
+  }
+
+  .avatar {
+    width: 2rem; /* Smaller avatar */
+    height: 2rem;
   }
 }

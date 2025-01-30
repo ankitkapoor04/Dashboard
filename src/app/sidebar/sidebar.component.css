@@ -162,7 +162,7 @@
   }
 
   .profile-card {
-    padding: 0.5rem;
+   width: 50%;
   }
 
   .menu-item {
@@ -170,7 +170,7 @@
     margin-bottom: 1rem;
   }
 
-  .menu-text, .settings-text {
+  .menu-text{
     font-size: 0.75rem;
   }
 }
