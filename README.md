@@ -102,7 +102,7 @@ This project is open-source and available under the [MIT License](LICENSE).
 For any queries or feedback, feel free to reach out to me:
 
 - GitHub: [@Adarsh01208](https://github.com/Adarsh01208)
-- Email: [adarsh01208@example.com](mailto:adarsh01208@example.com)
+- Email: [adarsh01208@example.com](mailto:adarshsingh01209@example.com)
 
 ## Contributing
 
