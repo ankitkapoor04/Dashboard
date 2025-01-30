@@ -1,0 +1,66 @@
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+      <h2>Users</h2>
+      <button class="btn btn-primary" (click)="addUser()">+ Add User</button>
+    </div>
+  
+    <!-- Users Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of getPaginatedUsers()">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name.split(' ')[0] }}</td>
+          <td>{{ user.name.split(' ')[1] }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.company.name }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="editUser(user)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  
+    <!-- Add/Edit User Modal -->
+    <div *ngIf="isModalOpen" class="modal-backdrop" [ngClass]="{ 'hidden': !isModalOpen }">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{ selectedUser?.id ? 'Edit User' : 'Add User' }}</h4>
+          <button type="button" class="close" (click)="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <label>First Name:</label>
+          <input class="form-control" [(ngModel)]="selectedUser.name" />
+  
+          <label>Email:</label>
+          <input class="form-control" [(ngModel)]="selectedUser.email" />
+  
+          <label>Department:</label>
+          <input class="form-control" [(ngModel)]="selectedUser.company.name" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button class="btn btn-primary" (click)="saveUser()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
