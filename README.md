@@ -1,59 +1,115 @@
-# UserDashboard
+# User Management Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+## Overview
 
-## Development server
+This is a **User Management Dashboard** built using **Angular**, allowing users to view, add, edit, and delete user details fetched from a mock backend API. The application interacts with **JSONPlaceholder's** '/users' endpoint to simulate CRUD operations on user data.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- **View Users**: Displays a list of users with details such as ID, First Name, Last Name, Email, and Department.
+- **Add Users**: A form allows adding new users. The form validates the user inputs before submission. The user data is sent to the mock backend, and a simulated response is returned.
+- **Edit Users**: Existing user data can be edited. The current user data is fetched, edited, and updated via a PUT request to the mock backend API.
+- **Delete Users**: Users can be deleted by sending a delete request to the backend API.
+- **Pagination**: Pagination has been implemented to manage and display a limited number of users per page for better performance.
+- **Client-Side Validation**: The form used to add/edit users includes client-side validation, ensuring that all fields are filled out correctly before submission.
+- **Responsive UI**: The dashboard is fully responsive across all devices, from desktops to mobile phones.
+- **Toast Notifications**: Toast messages are displayed to inform the user about the status of actions such as adding, editing, or deleting users.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Technologies Used
 
-## Code scaffolding
+- **Angular** (for building the frontend)
+- **HTML, CSS** (for the structure and styling)
+- **JSONPlaceholder API** (for mock backend interaction)
+- **Bootstrap** (for responsive design and layout)
+- **RxJS** (for handling asynchronous HTTP requests)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
-```bash
-ng generate component component-name
-```
+To run the project locally, follow these steps:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Prerequisites
 
-```bash
-ng generate --help
-```
+- Install [Node.js](https://nodejs.org/) (v14 or above).
+- Install [Angular CLI](https://angular.io/cli).
 
-## Building
+### Steps
 
-To build the project run:
+1. **Clone the repository**:
 
-```bash
-ng build
-```
+    ```bash
+    git clone https://github.com/Adarsh01208/User-dashboard
+    cd User-dashboard
+    ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+2. **Install dependencies**:
 
-## Running unit tests
+    ```bash
+    npm install
+    ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+3. **Run the application**:
 
-```bash
-ng test
-```
+    ```bash
+    ng serve
+    ```
 
-## Running end-to-end tests
+    After running this command, the application will be available at `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+## Challenges Faced
 
-```bash
-ng e2e
-```
+One of the major challenges I faced was making the application responsive across different screen sizes. Since I created separate components for the sidebar and navbar, it required a significant amount of time to ensure that both components were correctly responsive across all devices. Managing layout responsiveness with Bootstrap and ensuring the sidebar collapsed properly on smaller screens was tricky. However, with adjustments to media queries and Bootstrap grid classes, I was able to resolve the issue.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Future Improvements
 
-## Additional Resources
+- **Error Handling Enhancements**: Improve error handling to show more specific messages when the API is unreachable or returns errors.
+- **Testing**: Add unit tests and integration tests to ensure that future changes don't break the functionality.
+- **State Management**: Introduce state management using **NgRx** or another library for managing the state in a scalable way, especially as the app grows.
+- **User Authentication**: Implement user authentication for more secure actions (like adding, editing, and deleting users).
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Submission Details
+
+### Task Objective:
+
+- Develop a simple web application where users can **view**, **add**, **edit**, and **delete** user details from a mock backend API.
+- **UI**: Display a list of users and provide buttons or links to "Add", "Edit", and "Delete" users. Include a form for adding/editing users.
+- **Backend**: Use the **JSONPlaceholder** API, specifically the `/users` endpoint to simulate CRUD operations.
+
+### Functionality Implemented:
+- **View**: Users are fetched from the **JSONPlaceholder** API's `/users` endpoint and displayed in a list.
+- **Add**: A form allows the creation of new users, with data posted to the API. (Note: JSONPlaceholder simulates the addition of a user.)
+- **Edit**: A user can be edited by fetching the current data, allowing the user to modify it, and then sending the updated data back to the API.
+- **Delete**: A user can be deleted by sending a delete request to the API.
+
+### Bonus Features Implemented:
+- **Pagination**: Pagination has been implemented to limit the number of users displayed per page.
+- **Client-Side Validation**: Form fields are validated before submission to ensure the data is correct.
+- **Responsive Design**: The application layout adapts to different screen sizes, making it mobile-friendly.
+
+### Challenges:
+- The most challenging part was ensuring that the application was **responsive** on all device sizes, especially with the separate **sidebar** and **navbar** components. Managing the layout and making sure the sidebar collapsed on smaller screens took considerable effort, but it was resolved with proper media queries and Bootstrap classes.
+
+## Acknowledgments
+
+- Thanks to [JSONPlaceholder](https://jsonplaceholder.typicode.com/) for providing a mock API to facilitate development.
+- Special thanks to **Bootstrap** for helping with the responsive design, making it much easier to create a mobile-friendly application.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+## Contact
+
+For any queries or feedback, feel free to reach out to me:
+
+- GitHub: [@Adarsh01208](https://github.com/Adarsh01208)
+- Email: [adarsh01208@example.com](mailto:adarsh01208@example.com)
+
+## Contributing
+
+Contributions are welcome! If you want to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
