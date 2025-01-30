@@ -6,7 +6,5 @@ import { ViewUsersComponent } from './view-users/view-users.component';
 
 export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'users', component: ViewUsersComponent},
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', redirectTo: '/dashboard' }
 ];
