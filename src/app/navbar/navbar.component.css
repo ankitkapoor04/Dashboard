@@ -1,117 +1,106 @@
-/* Navbar Styles */
 .navbar {
   background-color: #FFFFFF;
-  padding: 10px 20px; /* Add some padding for a cleaner look */
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-between;  /* Spread out elements */
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 100; /* Ensure navbar stays above other content */
+  z-index: 100;
 }
 
-/* Content inside navbar */
 .nav-content {
   display: flex;
   align-items: center;
   font-size: 16px;
-  flex-grow: 1; /* Allow it to take up available space */
+  flex-grow: 1;
   justify-content: space-between;
 }
 
-/* User info section (avatar + name) */
 .user-info {
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Align avatar and name to the right corner */
-  margin-left: auto; /* Push user info to the right side */
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
-/* User name styling */
 .user-name {
   color: #132A52;
   font-weight: 600;
-  margin-left: 0.5rem; /* Space between avatar and name */
+  margin-left: 0.5rem;
   text-decoration: none;
   cursor: pointer;
   font-size: 16px;
 }
 
-/* Avatar styling */
 .avatar {
   width: 3rem;
   height: 3rem;
-  border-radius: 50%; /* Make avatar a circle */
-  object-fit: cover; /* Ensure the image fills the circle */
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-/* Media Queries for responsiveness */
-
-/* Laptop and larger screens */
 @media (min-width: 1024px) {
   .navbar {
-    padding: 1rem 2rem; /* Increase padding for larger screens */
+    padding: 1rem 2rem;
   }
 
   .user-name {
-    margin-left: 1rem; /* More space between avatar and name */
-    font-size: 18px; /* Larger font size */
+    margin-left: 1rem;
+    font-size: 18px;
   }
 
   .avatar {
-    width: 4rem; /* Larger avatar */
+    width: 4rem;
     height: 4rem;
   }
 }
 
-/* Tablet screens (below 1024px) */
 @media (max-width: 1023px) {
   .navbar {
-    padding: 0.5rem 10px; /* Reduce padding */
-    justify-content: center; /* Center navbar contents */
+    padding: 0.5rem 10px;
+    justify-content: center;
   }
 
   .user-name {
-    font-size: 14px; /* Smaller font size for tablet */
-    margin-left: 0.5rem; /* Keep a small margin */
+    font-size: 14px;
+    margin-left: 0.5rem;
   }
 
   .avatar {
-    width: 2.5rem; /* Smaller avatar on tablet */
+    width: 2.5rem;
     height: 2.5rem;
   }
 }
 
-/* Mobile screens (below 640px) */
 @media (max-width: 639px) {
   .navbar {
-    padding: 0.5rem 10px; /* Reduce padding */
-    justify-content: center; /* Center navbar contents */
+    padding: 0.5rem 10px;
+    justify-content: center;
   }
 
   .user-name {
-    font-size: 14px; /* Smaller font size for mobile */
-    margin-left: 0.5rem; /* Keep a small margin */
+    font-size: 14px;
+    margin-left: 0.5rem;
   }
 
   .avatar {
-    width: 2.5rem; /* Smaller avatar on mobile */
+    width: 2.5rem;
     height: 2.5rem;
   }
 }
 
-/* Very small screens (portrait mobile devices) */
 @media (max-width: 480px) {
   .navbar {
-    padding: 0.5rem 10px; /* Further reduce padding for very small screens */
+    padding: 0.5rem 10px;
   }
 
   .user-name {
-    font-size: 12px; /* Even smaller font for very small screens */
+    font-size: 12px;
   }
 
   .avatar {
-    width: 2rem; /* Smaller avatar */
+    width: 2rem;
     height: 2rem;
   }
 }

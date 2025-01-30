@@ -1,14 +1,25 @@
-/* Global Styles */
-
-/* Container */
 .container {
   margin: 0 auto;
   font-family: 'Inter', sans-serif;
   padding: 1rem;
 }
 
-/* Add User Button */
-.button {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f1f1f1;
+}
+
+.header h2 {
+  font-family: Poppins;
+  font-size: 50px;
+  font-weight: 400;
+  color: #000000;
+  flex: 1;
+}
+
+.addbutton {
   display: flex;
   align-items: center;
   color: white;
@@ -30,23 +41,6 @@
   white-space: nowrap;
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #f1f1f1;
-}
-
-.header h2 {
-  font-family: Poppins;
-  font-size: 50px;
-  font-weight: 400;
-  color: #000000;
-  flex: 1;
-}
-
-/* Table */
 .ticket-table {
   width: 100%;
   border-collapse: collapse;
@@ -111,8 +105,7 @@
   opacity: 0.8;
 }
 
-/* General Button Styling */
-.custom-btn {
+.modify-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -128,63 +121,59 @@
   letter-spacing: 1px;
 }
 
-.custom-btn i {
+.modify-btn i {
   font-size: 18px;
   transition: transform 0.2s ease;
 }
 
-/* Edit Button Styling */
-.custom-btn-edit {
+.modify-btn-edit {
   background-color: #193345;
   color: white;
 }
 
-.custom-btn-edit:hover {
+.modify-btn-edit:hover {
   background-color: #193345;
   transform: translateY(-2px);
 }
 
-.custom-btn-edit i {
+.modify-btn-edit i {
   transition: transform 0.2s ease;
 }
 
-.custom-btn-edit:hover i {
+.modify-btn-edit:hover i {
   transform: rotate(15deg);
 }
 
-.custom-btn-edit span {
+.modify-btn-edit span {
   font-size: 14px;
 }
 
-/* Delete Button Styling */
-.custom-btn-delete {
+.modify-btn-delete {
   background-color: #193345;
   color: white;
 }
 
-.custom-btn-delete:hover {
+.modify-btn-delete:hover {
   background-color: #193345;
   transform: translateY(-2px);
 }
 
-.custom-btn-delete i {
+.modify-btn-delete i {
   transition: transform 0.2s ease;
 }
 
-.custom-btn-delete:hover i {
+.modify-btn-delete:hover i {
   transform: rotate(15deg);
 }
 
-.custom-btn-delete span {
+.modify-btn-delete span {
   font-size: 14px;
 }
 
-/* Add small spacing between buttons */
-.custom-btn + .custom-btn {
+.modify-btn + .modify-btn {
   margin-left: 10px;
 }
 
-/* Pagination Container */
 .pagination {
   display: flex;
   justify-content: center;
@@ -193,7 +182,6 @@
   font-family: 'Arial', sans-serif;
 }
 
-/* Previous and Next Buttons */
 .pagination-btn {
   padding: 10px 15px;
   margin: 0 8px;
@@ -216,7 +204,6 @@
   transform: scale(1.1);
 }
 
-/* Page Dots Container */
 .page-dots {
   display: flex;
   align-items: center;
@@ -245,7 +232,6 @@
   color: white;
 }
 
-/* Modal */
 .modal-backdrop {
   display: flex;
   justify-content: flex-end;
@@ -263,7 +249,6 @@
   visibility: hidden;
 }
 
-/* Modal Content */
 .modal-content {
   width: 451px;
   height: 640px;
@@ -273,7 +258,6 @@
   margin-right: 1rem;
 }
 
-/* Modal Header */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -303,7 +287,6 @@
   color: #333;
 }
 
-/* Modal Body */
 .modal-body label {
   font-family: Poppins;
   display: block;
@@ -319,12 +302,11 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
- 
   transition: border-color 0.3s;
 }
 
 .custom-input:focus {
-  border-color:  #193345;
+  border-color: #193345;
   outline: none;
 }
 
@@ -334,7 +316,6 @@
   margin-bottom: 10px;
 }
 
-/* Modal Footer */
 .modal-footer {
   text-align: right;
   display: flex;
@@ -350,7 +331,7 @@
 }
 
 .modal-footer .btn-secondary {
-  background-color:  #193345;
+  background-color: #193345;
   color: #fff;
   border: none;
 }
@@ -371,19 +352,17 @@
   cursor: not-allowed;
 }
 
-/* Responsive Design */
-
-/* Tablet and Mobile Media Queries */
 @media (max-width: 1024px) {
   .header h2 {
     font-size: 40px;
   }
 
-  .ticket-table th, .ticket-table td {
+  .ticket-table th,
+  .ticket-table td {
     font-size: 14px;
   }
 
-  .button {
+  .addbutton {
     width: 120px;
     font-size: 16px;
   }
@@ -398,12 +377,12 @@
     padding: 20px;
   }
 
-  .custom-btn {
+  .modify-btn {
     font-size: 14px;
   }
 
-  .custom-btn-edit span,
-  .custom-btn-delete span {
+  .modify-btn-edit span,
+  .modify-btn-delete span {
     font-size: 12px;
   }
 }
@@ -413,7 +392,8 @@
     padding: 1rem;
   }
 
-  .ticket-table th, .ticket-table td {
+  .ticket-table th,
+  .ticket-table td {
     font-size: 12px;
   }
 
@@ -422,11 +402,12 @@
     text-align: center;
   }
 
-  .button {
+  .addbutton {
     width: 110px;
     font-size: 14px;
   }
-  .custom-input{
+
+  .custom-input {
     width: 90%;
   }
 
@@ -446,7 +427,8 @@
     padding: 0.5rem;
   }
 
-  .ticket-table th, .ticket-table td {
+  .ticket-table th,
+  .ticket-table td {
     font-size: 10px;
   }
 
@@ -455,7 +437,7 @@
     text-align: center;
   }
 
-  .button {
+  .addbutton {
     width: 100px;
     font-size: 12px;
   }
@@ -464,22 +446,23 @@
     font-size: 12px;
     padding: 6px 10px;
   }
-  .modal-body{
+
+  .modal-body {
     padding: 0px;
     width: 90%;
   }
-  .custom-input{
+
+  .custom-input {
     width: 90%;
   }
 
   .modal-content {
-    
     padding: 0.5rem;
   }
 
-  .custom-btn {
-    font-size: 12px;
-   display: flex;
-   
+  .modify-btn {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
   }
 }

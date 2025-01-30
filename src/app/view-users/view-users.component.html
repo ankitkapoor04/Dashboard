@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header">
     <h2 class="title">Users</h2>
-    <button class="button" (click)="addUser()"> <span><i class="fas fa-plus"></i></span> Add User</button>
+    <button class="addbutton" (click)="addUser()"> <span><i class="fas fa-plus"></i></span> Add User</button>
   </div>
 
   <table class="ticket-table">
@@ -25,10 +25,10 @@
         <td>{{ user.phone }}</td>
         <td>{{ user.address.city }}</td>
         <td>
-          <button class="custom-btn custom-btn-edit" (click)="editUser(user)">
+          <button class="modify-btn modify-btn-edit" (click)="editUser(user)">
             <i class="fas fa-edit"></i>
           </button>
-          <button class="custom-btn custom-btn-delete" (click)="deleteUser(user.id)">
+          <button class="modify-btn modify-btn-delete" (click)="deleteUser(user.id)">
             <i class="fas fa-trash-alt"></i>
           </button>
         </td>
