@@ -26,15 +26,16 @@ export class ViewUsersComponent {
   }
 
   fetchUsers(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(
-      (data: any) => {
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe({
+      next: (data: any) => {
         this.users = data;
         this.totalPages = Math.ceil(this.users.length / this.pageSize);
       },
-      error => {
-        this.toastr.error('Failed to load users');
+      error: (error: any) => {
+        this.toastr.error('Failed to load users', 'Server Error');
+        console.error("Error fetching users:", error);
       }
-    );
+    });
   }
 
   getPaginatedUsers(): any[] {
@@ -42,8 +43,22 @@ export class ViewUsersComponent {
     return this.users.slice(startIndex, startIndex + this.pageSize);
   }
 
+  getPageArray(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+  }
+
   addUser(): void {
-    this.selectedUser = {};
+    this.selectedUser = {
+      name: '',
+      email: '',
+      phone: '',
+      address: {
+        city: ''
+      },
+      company: {
+        name: ''
+      }
+    };
     this.isModalOpen = true;
   }
 
@@ -52,42 +67,53 @@ export class ViewUsersComponent {
     this.isModalOpen = true;
   }
 
-  saveUser(): void {
-    if (this.selectedUser.id) {
-      this.http.put(`https://jsonplaceholder.typicode.com/users/${this.selectedUser.id}`, this.selectedUser).subscribe(
-        () => {
+  saveUser(form: any): void {
+    if (form.invalid) {
+      this.toastr.warning('Please fill out all required fields', 'Validation Error');
+      return;
+    }
+
+    const userToSave = { ...this.selectedUser };
+
+    if (userToSave.id) {
+      this.http.put(`https://jsonplaceholder.typicode.com/users/${userToSave.id}`, userToSave).subscribe({
+        next: () => {
           this.toastr.success('User updated successfully');
           this.fetchUsers();
           this.isModalOpen = false;
         },
-        error => {
-          this.toastr.error('Failed to update user');
+        error: (error: any) => {
+          this.toastr.error('Failed to update user', 'Server Error');
+          console.error("Update error:", error);
         }
-      );
+      });
     } else {
-      this.http.post('https://jsonplaceholder.typicode.com/users', this.selectedUser).subscribe(
-        () => {
+      this.http.post('https://jsonplaceholder.typicode.com/users', userToSave).subscribe({
+        next: (data: any) => {
           this.toastr.success('User added successfully');
           this.fetchUsers();
           this.isModalOpen = false;
         },
-        error => {
-          this.toastr.error('Failed to add user');
+        error: (error: any) => {
+          this.toastr.error('Failed to add user', 'Server Error');
+          console.error("Post error:", error);
         }
-      );
+      });
     }
   }
 
   deleteUser(userId: number): void {
-    this.http.delete(`https://jsonplaceholder.typicode.com/users/${userId}`).subscribe(
-      () => {
+    this.http.delete(`https://jsonplaceholder.typicode.com/users/${userId}`).subscribe({
+      next: () => {
         this.toastr.success('User deleted successfully');
         this.users = this.users.filter(user => user.id !== userId);
+        this.fetchUsers();
       },
-      error => {
-        this.toastr.error('Failed to delete user');
+      error: (error: any) => {
+        this.toastr.error('Failed to delete user', 'Server Error');
+        console.error("Delete error:", error);
       }
-    );
+    });
   }
 
   changePage(page: number): void {

@@ -12,7 +12,7 @@
   top: 0;
   left: 280px;
   width: calc(100% - 250px);
-  z-index: 1000;
+ 
   background-color: #fff;
 }
 
@@ -30,9 +30,9 @@
   height: calc(100vh - 128px); /* Adjust to ensure enough height for content */
   overflow-y: auto;
   overflow-x: auto; /* Allow horizontal scrolling */
-  padding-left: 16px;
+  padding-left: 40px;
   box-sizing: border-box;
-  margin-top: 14rem;
+  margin-top: 7rem;
 }
 
 /* Content wrapper adjustments */

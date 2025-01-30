@@ -1,66 +1,88 @@
 <div class="container">
-    <!-- Header Section -->
-    <div class="header">
-      <h2>Users</h2>
-      <button class="btn btn-primary" (click)="addUser()">+ Add User</button>
-    </div>
-  
-    <!-- Users Table -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Department</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of getPaginatedUsers()">
-          <td>{{ user.id }}</td>
-          <td>{{ user.name.split(' ')[0] }}</td>
-          <td>{{ user.name.split(' ')[1] }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.company.name }}</td>
-          <td>
-            <button class="btn btn-sm btn-warning" (click)="editUser(user)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- Pagination Controls -->
-    <div class="pagination">
-      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }} of {{ totalPages }}</span>
-      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-    </div>
-  
-    <!-- Add/Edit User Modal -->
-    <div *ngIf="isModalOpen" class="modal-backdrop" [ngClass]="{ 'hidden': !isModalOpen }">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">{{ selectedUser?.id ? 'Edit User' : 'Add User' }}</h4>
-          <button type="button" class="close" (click)="closeModal()">×</button>
-        </div>
-        <div class="modal-body">
-          <label>First Name:</label>
-          <input class="form-control" [(ngModel)]="selectedUser.name" />
-  
-          <label>Email:</label>
-          <input class="form-control" [(ngModel)]="selectedUser.email" />
-  
-          <label>Department:</label>
-          <input class="form-control" [(ngModel)]="selectedUser.company.name" />
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-          <button class="btn btn-primary" (click)="saveUser()">Save</button>
-        </div>
-      </div>
-    </div>
+  <div class="header">
+    <h2 class="title">Users</h2>
+    <button class="button" (click)="addUser()"> <span><i class="fas fa-plus"></i></span> Add User</button>
   </div>
-  
+
+  <table class="ticket-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Mobile</th>
+        <th>City</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of getPaginatedUsers()">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.company.name }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address.city }}</td>
+        <td>
+          <button class="custom-btn custom-btn-edit" (click)="editUser(user)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="custom-btn custom-btn-delete" (click)="deleteUser(user.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="pagination-btn">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="page-dots">
+      <span *ngFor="let page of getPageArray()">
+        <button (click)="changePage(page)" [class.active]="currentPage === page">{{ page }}</button>
+      </span>
+    </div>
+
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="pagination-btn">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div *ngIf="isModalOpen" class="modal-backdrop">
+    <div class="modal-content">  <div class="modal-header">
+        <h4 class="modal-title">{{ selectedUser?.id ? 'Edit User' : 'Add User' }}</h4>
+        <button type="button" class="close" (click)="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <form #userForm="ngForm" (ngSubmit)="saveUser(userForm); $event.preventDefault()">
+          <label>Name:</label>
+          <input type="text" class="custom-input" [(ngModel)]="selectedUser.name" name="name" required #name="ngModel">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">Name is required.</div>
+
+          <label>Email:</label>
+          <input type="email" class="custom-input" [(ngModel)]="selectedUser.email" name="email" required email #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">Valid email is required.</div>
+
+          <label>Mobile:</label>
+          <input type="text" class="custom-input" [(ngModel)]="selectedUser.phone" name="phone" required #phone="ngModel">
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="error-message">Mobile is required.</div>
+
+          <label>City:</label>
+          <input type="text" class="custom-input" [(ngModel)]="selectedUser.address.city" name="city" required #city="ngModel">
+          <div *ngIf="city.invalid && (city.dirty || city.touched)" class="error-message">City is required.</div>
+
+          <label>Department:</label>
+          <input type="text" class="custom-input" [(ngModel)]="selectedUser.company.name" name="department" required #department="ngModel">
+          <div *ngIf="department.invalid && (department.dirty || department.touched)" class="error-message">Department is required.</div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Save</button>
+          </div>
+        </form>
+      </div>
+    </div> </div> </div>
